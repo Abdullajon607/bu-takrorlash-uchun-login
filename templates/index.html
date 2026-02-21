@@ -1,243 +1,405 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
+{% load static %}
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login UI</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xmas Countdown - Christmas Countdown Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'templatemo-605-xmas-countdown.css' %}">
+<!--
 
-    body{
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(120deg,
-        #f5d76e 0%,
-        #9fe0d1 35%,
-        #b6c5ff 70%,
-        #f3a0a0 100%);
-      padding: 24px;
-    }
+TemplateMo 605 Xmas Countdown
 
-    /* Background blur effect layer */
-    .bg-blur{
-      position: fixed;
-      inset: 0;
-      filter: blur(18px);
-      transform: scale(1.1);
-      background: inherit;
-      z-index: -1;
-    }
+https://templatemo.com/tm-605-xmas-countdown
 
-    .card{
-      width: 420px;
-      max-width: 95vw;
-      padding: 28px 28px 22px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.28);
-      border: 1px solid rgba(255,255,255,0.35);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.18);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      text-align: center;
-    }
-
-    .avatar{
-      width: 90px;
-      height: 90px;
-      margin: 6px auto 12px;
-      border-radius: 50%;
-      background: #2b91a6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    .avatar svg{
-      width: 45px;
-      height: 45px;
-      fill: #fff;
-      opacity: 0.95;
-    }
-
-    h1{
-      font-size: 44px;
-      font-weight: 300;
-      color: rgba(0,0,0,0.45);
-      margin-bottom: 18px;
-    }
-
-    .field{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,255,255,0.7);
-      padding: 14px 14px;
-      border-radius: 8px;
-      margin: 14px 0;
-    }
-
-    .field .icon{
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      opacity: 0.7;
-    }
-
-    .field input{
-      width: 100%;
-      border: none;
-      outline: none;
-      background: transparent;
-      font-size: 18px;
-      color: rgba(0,0,0,0.6);
-    }
-
-    .field input::placeholder{
-      color: rgba(0,0,0,0.35);
-    }
-
-    .btn{
-      width: 100%;
-      margin-top: 12px;
-      padding: 14px 16px;
-      border: none;
-      border-radius: 8px;
-      background: #2b91a6;
-      color: #fff;
-      font-size: 26px;
-      font-weight: 300;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-      transition: transform 0.08s ease, opacity 0.2s ease;
-    }
-
-    .btn:active{ transform: scale(0.99); }
-    .btn:hover{ opacity: 0.95; }
-
-    .row{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 12px;
-      color: rgba(0,0,0,0.35);
-      font-size: 14px;
-    }
-
-    .row a{
-      color: rgba(0,0,0,0.35);
-      text-decoration: none;
-    }
-
-    .row a:hover{
-      text-decoration: underline;
-    }
-
-    .remember{
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      user-select: none;
-    }
-
-    .remember input{
-      width: 18px;
-      height: 18px;
-      accent-color: #2b91a6;
-    }
-
-    .divider{
-      margin: 22px 0 10px;
-      height: 2px;
-      background: rgba(255,255,255,0.45);
-      border-radius: 99px;
-    }
-
-    .register{
-      color: rgba(0,0,0,0.35);
-      font-size: 14px;
-      margin-top: 10px;
-    }
-    .register a{
-      font-weight: 700;
-      color: rgba(0,0,0,0.45);
-      text-decoration: none;
-      letter-spacing: 0.5px;
-    }
-    .register a:hover{ text-decoration: underline; }
-
-    .credit{
-      margin-top: 18px;
-      color: rgba(0,0,0,0.30);
-      font-size: 14px;
-    }
-
-    @media (max-width: 380px){
-      h1{ font-size: 38px; }
-      .btn{ font-size: 22px; }
-    }
-  </style>
+-->
 </head>
 <body>
-  <div class="bg-blur"></div>
+    <!-- Background -->
+    <div class="grid-bg"></div>
+    <div class="particles" id="particles"></div>
 
-  <div class="card">
-    <div class="avatar" aria-hidden="true">
-      <!-- user icon -->
-      <svg viewBox="0 0 24 24">
-        <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2-8 4.5V21h16v-2.5C20 16 16.42 14 12 14Z"/>
-      </svg>
-    </div>
-
-    <h1>Sign In</h1>
-
-    <form>
-      <div class="field">
-        <div class="icon" aria-hidden="true">
-          <!-- small user icon -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" fill="rgba(0,0,0,0.45)"/>
-            <path d="M4 20c0-3 4-5 8-5s8 2 8 5v1H4v-1Z" fill="rgba(0,0,0,0.35)"/>
-          </svg>
+    <!-- Header -->
+    <header id="header">
+        <a href="#hero" class="logo">
+            <div class="logo-icon">🎄</div>
+            <span class="logo-text">Xmas<span>Countdown</span></span>
+        </a>
+        <nav id="nav">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#events">Events</a>
+            <a href="#traditions">Traditions</a>
+            <a href="#newsletter" class="nav-cta">Subscribe</a>
+        </nav>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <input type="text" placeholder="Username" autocomplete="username" />
-      </div>
+    </header>
 
-      <div class="field">
-        <div class="icon" aria-hidden="true">
-          <!-- lock icon -->
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M7 10V8a5 5 0 0 1 10 0v2" stroke="rgba(0,0,0,0.45)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M6 10h12v11H6V10Z" fill="rgba(0,0,0,0.25)"/>
-            <path d="M12 14a2 2 0 0 0-1 3.732V19h2v-1.268A2 2 0 0 0 12 14Z" fill="rgba(0,0,0,0.40)"/>
-          </svg>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-badge">
+            <span class="dot"></span>
+            Live Countdown Active
         </div>
-        <input type="password" placeholder="Password" autocomplete="current-password" />
-      </div>
+        <h1>Christmas<br><span class="gradient">Countdown</span></h1>
+        <p class="hero-subtitle">Every second brings us closer to the most magical celebration of the year</p>
+        
+        <div class="countdown-wrapper">
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <span class="countdown-colon">:</span>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <span class="countdown-colon">:</span>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <span class="countdown-colon">:</span>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
 
-      <button class="btn" type="submit">Login</button>
+            <div class="target-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                December 25, 2025 at 6:00 PM
+            </div>
+        </div>
 
-      <div class="row">
-        <label class="remember">
-          <input type="checkbox" />
-          <span>Remember me</span>
-        </label>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="line"></div>
+        </div>
+    </section>
 
-        <a href="#">Forgot Password?</a>
-      </div>
-    </form>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <span class="section-tag">About Us</span>
+            <h2 class="section-title">The Spirit of Christmas</h2>
+            <p class="section-subtitle">Celebrating traditions, creating memories, and spreading joy</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image">
+                <div class="about-image-stack">
+                    <div class="about-img-item img-1">
+                        <img src="{% static 'images/christmas-pic-21.jpg' %}" alt="Christmas Tree">
+                    </div>
+                    <div class="about-img-item img-2">
+                        <img src="{% static 'images/christmas-pic-22.jpg' %}" alt="Christmas Lights">
+                    </div>
+                    <div class="about-img-item img-3">
+                        <img src="{% static 'images/christmas-pic-23.jpg' %}" alt="Christmas Ornaments">
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
+                <h3>A Time for <span>Wonder</span> & Celebration</h3>
+                <p>Christmas is more than a holiday—it's a season of warmth, togetherness, and the simple joy of giving. As lights twinkle and snow falls, we're reminded of what truly matters.</p>
+                <p>Whether gathering with loved ones or finding peace in quiet moments, this season invites us to pause, reflect, and celebrate the magic around us.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Family Traditions
+                    </div>
+                    <div class="about-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Gift Giving
+                    </div>
+                    <div class="about-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Holiday Feasts
+                    </div>
+                    <div class="about-feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Seasonal Music
+                    </div>
+                </div>
+                <div class="about-templatemo">
+                    <p>This free Christmas template is brought to you by <strong>TemplateMo</strong> — your destination for beautiful, modern website templates. Download hundreds of free HTML CSS templates for your personal and commercial projects.</p>
+                    <a href="https://templatemo.com" target="_blank" class="btn-templatemo">
+                        <span>Visit TemplateMo</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="divider"></div>
+    <!-- Events Section -->
+    <section class="events" id="events">
+        <div class="section-header">
+            <span class="section-tag">Upcoming</span>
+            <h2 class="section-title">Holiday Events</h2>
+            <p class="section-subtitle">Mark your calendar for these special celebrations</p>
+        </div>
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{% static 'images/christmas-pic-31.jpg' %}" alt="Carol Night">
+                    <div class="event-date-badge">
+                        <div class="day">15</div>
+                        <div class="month">Dec</div>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <h3>Carol Night</h3>
+                    <p>An evening of classic Christmas carols performed by our community choir under the stars.</p>
+                    <div class="event-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            7:00 PM
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Town Square
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{% static 'images/christmas-pic-32.jpg' %}" alt="Cookie Exchange">
+                    <div class="event-date-badge">
+                        <div class="day">20</div>
+                        <div class="month">Dec</div>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <h3>Cookie Exchange</h3>
+                    <p>Bring your favorite holiday treats and swap recipes with neighbors at our annual gathering.</p>
+                    <div class="event-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            3:00 PM
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Community Hall
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{% static 'images/christmas-pic-33.jpg' %}" alt="Candlelight Vigil">
+                    <div class="event-date-badge">
+                        <div class="day">24</div>
+                        <div class="month">Dec</div>
+                    </div>
+                </div>
+                <div class="event-content">
+                    <h3>Candlelight Vigil</h3>
+                    <p>A peaceful Christmas Eve celebration with candlelight, reflection, and seasonal spirit.</p>
+                    <div class="event-meta">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            9:00 PM
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            City Chapel
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="register">
-      Don't have a account ? <a href="#">REGISTER HERE</a>
-    </div>
+    <!-- Traditions Section -->
+    <section class="traditions" id="traditions">
+        <div class="section-header">
+            <span class="section-tag">Cherished</span>
+            <h2 class="section-title">Holiday Traditions</h2>
+            <p class="section-subtitle">The timeless rituals that make Christmas special</p>
+        </div>
+        <div class="traditions-grid">
+            <div class="tradition-card">
+                <div class="tradition-image">
+                    <img src="{% static 'images/christmas-pic-41.jpg' %}" alt="Decorating Tree">
+                </div>
+                <div class="tradition-content">
+                    <div class="tradition-number">01</div>
+                    <h3>Decorating the Tree</h3>
+                    <p>Hanging ornaments collected over the years, each one telling its own story of Christmases past.</p>
+                    <a href="#" class="tradition-btn">
+                        <span>Learn More</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="tradition-card">
+                <div class="tradition-image">
+                    <img src="{% static 'images/christmas-pic-42.jpg' %}" alt="Gift Exchange">
+                </div>
+                <div class="tradition-content">
+                    <div class="tradition-number">02</div>
+                    <h3>Secret Gift Exchange</h3>
+                    <p>Finding the perfect gift for someone special, wrapped with love and anticipation.</p>
+                    <a href="#" class="tradition-btn">
+                        <span>Learn More</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="tradition-card">
+                <div class="tradition-image">
+                    <img src="{% static 'images/christmas-pic-43.jpg' %}" alt="Hot Cocoa">
+                </div>
+                <div class="tradition-content">
+                    <div class="tradition-number">03</div>
+                    <h3>Hot Cocoa Nights</h3>
+                    <p>Gathering by the fire with warm mugs, sharing stories as snow falls softly outside.</p>
+                    <a href="#" class="tradition-btn">
+                        <span>Learn More</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="tradition-card">
+                <div class="tradition-image">
+                    <img src="{% static 'images/christmas-pic-44.jpg' %}" alt="Christmas Feast">
+                </div>
+                <div class="tradition-content">
+                    <div class="tradition-number">04</div>
+                    <h3>Christmas Feast</h3>
+                    <p>Gathering around the table with family for a special meal and cherished conversations.</p>
+                    <a href="#" class="tradition-btn">
+                        <span>Learn More</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="credit">designed by freepik.com</div>
-  </div>
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="newsletter-container">
+            <div class="section-header" style="margin-bottom: 40px;">
+                <span class="section-tag">Stay Updated</span>
+                <h2 class="section-title">Join the Celebration</h2>
+            </div>
+            <p>Subscribe to receive holiday updates, event reminders, and a sprinkle of Christmas magic delivered to your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#hero" class="logo">
+                    <div class="logo-icon">🎄</div>
+                    <span class="logo-text">Xmas<span>Countdown</span></span>
+                </a>
+                <p>Celebrating the magic of Christmas with a live countdown, events, and traditions that bring us together.</p>
+                <div class="footer-social">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">◎</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="YouTube">▶</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#traditions">Traditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Gift Ideas</a></li>
+                    <li><a href="#">Holiday Recipes</a></li>
+                    <li><a href="#">Decoration Tips</a></li>
+                    <li><a href="#">Event Planning</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">hello@christmas25.com</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Xmas Countdown. Designed by <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+<script src="{% static 'templatemo-605-countdown-scripts.js' %}"></script>
 </body>
 </html>
